@@ -1,0 +1,34 @@
+@startuml
+autonumber
+title Sequence Diagram Update recipe
+
+actor Chef as A
+participant "ChefUI" as UI
+participant "RecipeController" as C
+participant "RecipeRepository" as RR
+participant "DatabaseHelper" as DB
+
+A -> UI : openRecipeDetails(recipeId)
+UI -> C : getRecipe(recipeId)
+C -> RR : findById(recipeId)
+RR --> C : Recipe
+C --> UI : display(recipe)
+
+A -> UI : edit(name, description, imagePath)
+UI -> C : updateRecipe(recipeId, name, description, imagePath)
+
+' Validation du nom et existence
+C -> RR : findById(recipeId)
+RR --> C : Recipe (r)
+C -> C : r.update(name,description,imagePath)
+
+' Persistance
+C -> RR : update(r)
+RR -> DB : UPDATE recipes SET ...
+DB --> RR : ok
+RR --> C : ok
+
+C --> UI : success("Recipe updated")
+UI --> A : showConfirmation()
+
+@enduml

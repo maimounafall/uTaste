@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/main_background"
+    android:padding="20dp"
+    tools:ignore="ExtraText">
+
+    <!-- LOGO UOTTAWA EN HAUT -->
+    <ImageView
+        android:id="@+id/uottawa_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:contentDescription="@string/logo_de_uottawa"
+        android:src="@drawable/uottawa_logo"
+        app:tint="@color/burgundy" />
+
+    <!-- BOUTON LOGIN EN BAS -->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="140dp"
+        android:backgroundTint="#800020"
+        android:elevation="6dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="12dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="12dp"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

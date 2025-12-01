@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- couleur de fond -->
+    <solid android:color="#FCE4EC"/>  <!-- rose clair -->
+
+    <!-- coins arrondis -->
+    <corners android:radius="20dp" />
+
+    <!-- bordure -->
+    <stroke
+        android:width="2dp"
+        android:color="#800020"/> <!-- bordeaux -->
+</shape>

@@ -1,0 +1,132 @@
+@startuml
+
+
+title Class Diagram 2 uTaste 
+
+package "domain" {
+  abstract class User {
+    - firstName : String
+    - lastName  : String
+    - email     : String  <<unique>>
+    - password  : String
+    - createdAt : DateTime <<auto>>
+    - updatedAt : DateTime <<auto>>
+    + getRole() : String
+    + changePassword(oldPwd:String, newPwd:String) : boolean
+  }
+  ' Ces classes heritent de User 
+  class Administrator
+  class Chef
+  class Waiter
+
+  class Recipe {
+    + id         : String
+    + name       : String <<unique>>
+    + description: String
+    'Chemin vers l'image locale stocké dans la banque d image 
+    + imagePath  : String
+    + createdAt  : DateTime
+    + updatedAt  : DateTime
+    + addIngredient(i:Ingredient) : void
+    + update(name:String, description:String, imagePath:String) : void
+    + removeIngredient(ingredientId:String) : void
+  }
+
+  class Ingredient {
+    + id              : String
+    + name            : String
+    ' Sotcke l'identifiant scanné
+    + qrCode          : String
+    + quantityPercent : float  
+    + createdAt       : DateTime
+    + updatedAt       : DateTime
+    + setQuantityPercent(q:float) : void
+  }
+}
+
+package "controllers" {
+  class RecipeController {
+    + createRecipe(chefEmail:String, name:String, description:String, imagePath:String) : Recipe
+    + updateRecipe(recipeId:String, name:String, description:String, imagePath:String) : boolean
+    + deleteRecipe(recipeId:String) : boolean
+    + addIngredient(recipeId:String, qrCode:String, title:String, quantityPercent:float) : boolean
+    + updateIngredient(ingredientId:String, quantityPercent:float) : boolean
+    + deleteIngredient(ingredientId:String) : boolean
+  }
+
+  class AdminController {
+    + resetDatabase() : void
+    + resetPassword(userEmail:String) : void
+    + updateUserProfile(email:String, firstName:String, lastName:String, newEmail:String) : void
+  }
+}
+
+package "repositories" {
+  interface UserRepository {
+    + findByEmail(email:String) : User
+    + save(user:User) : void
+    + update(user:User) : void
+  }
+
+  interface RecipeRepository {
+    + findById(id:String) : Recipe
+    + findByName(name:String) : Recipe
+    + save(recipe:Recipe) : void
+    + update(recipe:Recipe) : void
+    + delete(id:String) : void
+  }
+
+  interface IngredientRepository {
+    + findById(id:String) : Ingredient
+    + findByRecipe(recipeId:String) : List<Ingredient>
+    + save(ingredient:Ingredient) : void
+    + update(ingredient:Ingredient) : void
+    + delete(id:String) : void
+  }
+
+  class SQLiteUserRepository
+  class SQLiteRecipeRepository
+  class SQLiteIngredientRepository
+}
+
+package "persistence" {
+  class DatabaseHelper {
+    + getConnection() : Connection
+    + resetDatabase() : void
+  }
+}
+
+' LES RELATIONS 
+
+' Héritages
+User <|-- Administrator
+User <|-- Chef
+User <|-- Waiter
+
+' Composition : les ingredients n'existent pas sans recette 
+Recipe *-- "1..*" Ingredient : contains
+
+' Aggregation: Un chef possede ou crée plusieurs recette
+Chef "1" o-- "0..*" Recipe : creates/owns
+
+' Les contrôleurs utilisent les repositories
+RecipeController ..> RecipeRepository : uses
+RecipeController ..> IngredientRepository : uses
+RecipeController ..> UserRepository : uses 
+
+AdminController ..> UserRepository : uses
+AdminController ..> DatabaseHelper : uses (reset)
+
+' Les implémentations SQLite dépendent du helper
+SQLiteUserRepository ..> DatabaseHelper
+SQLiteRecipeRepository ..> DatabaseHelper
+SQLiteIngredientRepository ..> DatabaseHelper
+
+' Les interfaces sont implantées par les classes SQLite
+UserRepository <|.. SQLiteUserRepository
+RecipeRepository <|.. SQLiteRecipeRepository
+IngredientRepository <|.. SQLiteIngredientRepository
+
+@enduml
+
+

@@ -1,0 +1,28 @@
+@startuml
+autonumber
+title Sequence Diagram delete Ingredient from Recipe
+
+actor Chef as A
+participant "ChefUI" as UI
+participant "RecipeController" as C
+participant "IngredientRepository" as IR
+participant "DatabaseHelper" as DB
+
+A -> UI : selectIngredientToDelete(ingredientId)
+UI -> C : deleteIngredient(ingredientId)
+
+C -> IR : findById(ingredientId)
+IR --> C : Ingredient
+
+alt ingredient not found
+  C -> UI : error("Ingredient not found")
+else
+  C -> IR : delete(ingredientId)
+  IR -> DB : DELETE FROM ingredients WHERE id=?
+  DB --> IR : ok
+  IR --> C : ok
+
+  C --> UI : success("Ingredient deleted")
+  UI --> A : showConfirmation()
+end
+@enduml

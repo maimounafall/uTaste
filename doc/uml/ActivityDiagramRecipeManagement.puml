@@ -1,0 +1,62 @@
+@startuml
+title Activity Diagram  Manage Recipes 
+
+start
+:Chef logs in;
+:Display chef menu;
+:Show buttons:\n- Add Recipe\n- Manage Recipes;
+if (User selects "Add Recipe"?) then (yes)
+  :Open Add Recipe page;
+  :Enter recipe name, description, image;
+  :Validate name uniqueness;
+  if (unique?) then (yes)
+    :Save recipe to database;
+    :Show success message;
+  else (no)
+    :Show error " Name already exists";
+  endif;
+  :Return to Chef Home Page;
+else (no)
+endif
+
+if (User selects "Manage Recipes"?) then (yes)
+  :Open Manage Recipes page;
+  :Display all existing recipe cards;
+  :Each card shows:
+   - Image
+   - Name
+   - Buttons:
+     Modify Recipe / Add Ingredient / Delete Recipe;
+
+  :Select an action on a recipe;
+  switch (Recipe Action)
+    case (Modify Recipe)
+      :Open Modify Recipe page;
+      :Edit name,or description;
+      :Edit or delete ingredients;
+      :Save changes;
+      :Show confirmation message;
+      :Return to Manage Recipes;
+    break
+    case (Add Ingredient)
+      :Open Add Ingredient page;
+      :Scan QR code;
+      :Enter title and quantity (%);
+      :Save ingredient to database;
+      :Show confirmation message;
+      :Return to Manage Recipes;
+    break
+    case (Delete Recipe)
+      :Confirm deletion;
+      :Delete recipe and its ingredients;
+      :Show confirmation message;
+      :Return to Manage Recipes;
+    break
+  endswitch
+else (no)
+endif
+
+
+stop
+@enduml
+

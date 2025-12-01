@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">uTaste</string>
+    <string name="utaste">uTaste</string>
+    <string name="logo_de_uottawa">Logo de uOttawa</string>
+    <string name="admin_title"><u>Admin</u></string>
+    <string name="edit_waiter">Edit Waiter</string>
+    <string name="adminEmail">admin@utaste.ca</string>
+    <string name="admin">Admin</string>
+    <string name="admin_pwd">admin-pwd</string>
+    <string name="chef_email">chef@utaste.ca</string>
+    <string name="chef_name">Chef</string>
+    <string name="chef_pwd">chef-pwd</string>
+    <string name="waiter_name">Waiter</string>
+    <string name="waiter_email">waiter@utaste.ca</string>
+    <string name="waiter_pwd">waiter-pwd</string>
+    <string name="recipe_image">ic_add_photo</string>
+
+</resources>

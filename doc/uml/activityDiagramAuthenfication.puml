@@ -1,0 +1,27 @@
+@startuml
+title Activity Diagram - User Login
+
+start
+
+:Display login screen;
+:User enters email and password;
+
+if (Credentials valid?) then (yes)
+  :Authenticate user;
+
+  switch (userRole)
+    case (Administrator)
+      :Display Administrator menu;
+    case (Chef)
+      :Display Chef menu;
+    case (Waiter)
+      :Display Waiter menu;
+  endswitch
+
+else (no)
+  :Display error message;
+  :Return to login screen;
+endif
+
+stop
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+autonumber
+title Sequence Diagram delete recipe
+
+actor Chef as A
+participant "ChefUI" as UI
+participant "RecipeController" as C
+participant "RecipeRepository" as RR
+participant "IngredientRepository" as IR
+participant "DatabaseHelper" as DB
+
+A -> UI : selectRecipeToDelete(recipeId)
+UI -> C : deleteRecipe(recipeId)
+
+' Vérifier existence
+C -> RR : findById(recipeId)
+RR --> C : Recipe
+
+alt recipe not found
+  C -> UI : error("Recipe not found")
+else
+  ' Supprimer ses ingrédients d'abord (composition)
+  C -> IR : findByRecipe(recipeId)
+  IR --> C : List<Ingredient>
+  loop for each ingredient
+    C -> IR : delete(ingredient.id)
+    IR -> DB : DELETE FROM ingredients WHERE id=?
+    DB --> IR : ok
+  end
+
+  ' Supprimer la recette
+  C -> RR : delete(recipeId)
+  RR -> DB : DELETE FROM recipes WHERE id=?
+  DB --> RR : ok
+
+  C --> UI : success("Recipe deleted")
+  UI --> A : showConfirmation()
+end
+@enduml

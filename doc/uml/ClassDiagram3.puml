@@ -1,0 +1,100 @@
+@startuml
+title Class Diagram 3 Utaste
+
+package "domain" {
+  abstract class User {
+    - firstName : String
+    - lastName  : String
+    - email     : String <<unique>>
+    - password  : String
+    - createdAt : DateTime <<auto>>D
+    - updatedAt : DateTime <<auto>>
+    + getRole() : String
+    + changePassword(oldPwd:String, newPwd:String) : boolean
+  }
+
+  class Administrator
+  class Chef
+  class Waiter
+
+  class Recipe {
+    + id : String
+    + name : String <<unique>>
+    + description : String
+    + imagePath : String
+    + createdAt : DateTime
+    + updatedAt : DateTime
+    + addIngredient(i:Ingredient) : void
+    + update(name:String, description:String, imagePath:String) : void
+    + removeIngredient(id:String) : void
+    + calculateNutritionSummary() : NutritionSummary
+    + getTotalCalories():float 
+    + getTotalFat(): float 
+    + getTotalproteins(): float 
+    + getTotalCarbohydrates(): float 
+  }
+
+  class Ingredient {
+    + id : String
+    + name : String
+    + qrCode : String
+    + quantityPercent : float
+    + createdAt : DateTime
+    + updatedAt : DateTime
+    + setQuantityPercent(q:float) : void
+    + fetchNutritionInfo() : NutritionInfo
+  }
+
+  class NutritionInfo {
+    + carbohydrates : float
+    + fat : float
+    + fibers : float
+    + proteins : float
+    + salt : float
+    + calories : float
+  }
+
+  class NutritionSummary {
+    + totalCalories : float
+    + totalFat : float
+    + totalProteins : float
+    + totalCarbohydrates : float
+    + toString() : String
+  }
+
+  class OpenFoodFactsService {
+    + fetchNutritionData(barcode:String) : NutritionInfo
+    + parseJsonData(json:String) : NutritionInfo
+  }
+}
+
+package "repositories" {
+  interface IngredientRepository {
+    + findById(id:String) : Ingredient
+    + findByRecipe(recipeId:String) : List<Ingredient>
+    + save(ingredient:Ingredient) : void
+    + update(ingredient:Ingredient) : void
+    + delete(id:String) : void
+    + updateNutritionData(ingredientId:String, info:NutritionInfo) : void
+  }
+}
+
+package "tests" {
+  class WaiterManagementTest
+  class IngredientNutritionTest
+}
+
+
+' Relations
+User <|-- Administrator
+User <|-- Chef
+User <|-- Waiter
+Recipe *-- "1..*" Ingredient
+Ingredient --> NutritionInfo : has >
+Ingredient ..> OpenFoodFactsService : fetches >
+Recipe --> NutritionSummary : computes >
+
+WaiterManagementTest ..> Waiter : tests >
+IngredientNutritionTest ..> Ingredient : tests >
+IngredientNutritionTest ..> Recipe : tests >
+@enduml

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"
+    tools:context=".WaiterActivity">
+
+    <!-- Retour -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/burgundy"
+            android:text="Logout"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--  Bande bordeaux -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/white_background"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <!-- Bande bordeaux -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="320dp"
+                            android:background="@drawable/top_profile_backgnd"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Icône du serveur -->
+                        <ImageView
+                            android:id="@+id/imgWaiter"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="140dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginEnd="140dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:srcCompat="@drawable/waiter_icon" />
+
+                        <TextView
+                            android:id="@+id/tvWaiterName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/waiter_name"
+                            android:textColor="@color/pale_pink"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imgWaiter" />
+
+                        <TextView
+                            android:id="@+id/tvWaiterEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/waiter_email"
+                            android:textColor="@color/pale_pink"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvWaiterName" />
+
+                        <!-- Section blanche principale -->
+                        <LinearLayout
+                            android:id="@+id/linearLayoutWaiter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="50dp"
+                            android:background="@drawable/white_background"
+                            android:elevation="3dp"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvWaiterEmail">
+
+                            <!-- Trois cards -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <!-- View Recipes -->
+                                <LinearLayout
+                                    android:id="@+id/cardViewRecipes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="140dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="5dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgViewRecipes"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/view_recipe_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <!-- invisible button -->
+                                        <Button
+                                            android:id="@+id/btnViewRecipes"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgViewRecipes"
+                                            app:layout_constraintEnd_toEndOf="@id/imgViewRecipes"
+                                            app:layout_constraintStart_toStartOf="@id/imgViewRecipes"
+                                            app:layout_constraintTop_toTopOf="@id/imgViewRecipes" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="View Recipes"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Record Sale -->
+                                <LinearLayout
+                                    android:id="@+id/cardRecordSale"
+                                    android:layout_width="0dp"
+                                    android:layout_height="140dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="5dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgRecordSale"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/record_sale_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <Button
+                                            android:id="@+id/btnRecordSale"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgRecordSale"
+                                            app:layout_constraintEnd_toEndOf="@id/imgRecordSale"
+                                            app:layout_constraintStart_toStartOf="@id/imgRecordSale"
+                                            app:layout_constraintTop_toTopOf="@id/imgRecordSale" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Record Sale"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Sales Report -->
+                                <LinearLayout
+                                    android:id="@+id/cardSalesReport"
+                                    android:layout_width="0dp"
+                                    android:layout_height="140dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="5dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgSalesReport"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/sales_report_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <Button
+                                            android:id="@+id/btnSalesReport"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgSalesReport"
+                                            app:layout_constraintEnd_toEndOf="@id/imgSalesReport"
+                                            app:layout_constraintStart_toStartOf="@id/imgSalesReport"
+                                            app:layout_constraintTop_toTopOf="@id/imgSalesReport" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Sales Report"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Password + Dates section identique -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="24dp"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="30dp"
+                                android:background="@drawable/white_background"
+                                android:elevation="3dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Password"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <EditText
+                                        android:id="@+id/editWaiterPassword"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:inputType="textPassword"
+                                        android:text="@string/waiter_pwd"
+                                        android:textAlignment="viewEnd"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:background="@color/burgundy" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Created at"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvWaiterCreatedAt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2025-10-09 14:33"
+                                        android:textColor="#444"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Last updated"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvWaiterUpdatedAt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2025-10-09 14:33"
+                                        android:textColor="#444"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Save button -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="80dp"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <Button
+                        android:id="@+id/btnWaiterSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_button"
+                        android:text="Save changes"
+                        android:textColor="@color/burgundy" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Logout -->
+
+    <!-- Scroll global -->
+</androidx.constraintlayout.widget.ConstraintLayout>

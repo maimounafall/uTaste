@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#FFF8F9">
+
+    <!-- Flèche retour -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_arrow_back"
+        android:contentDescription="Back"
+        app:tint="#800020"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Titre -->
+    <TextView
+        android:id="@+id/tvAddWaiterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a New Waiter 🍽️"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#800020"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Champ nom -->
+    <EditText
+        android:id="@+id/etWaiterName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:padding="12dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintTop_toBottomOf="@id/tvAddWaiterTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="84dp"/>
+
+    <!-- Champ email -->
+    <EditText
+        android:id="@+id/etWaiterEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintTop_toBottomOf="@id/etWaiterName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Champ mot de passe -->
+    <EditText
+        android:id="@+id/etWaiterPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintTop_toBottomOf="@id/etWaiterEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Bouton enregistrer -->
+    <Button
+        android:id="@+id/btnSaveWaiter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save Waiter"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#800020"
+        android:textAllCaps="false"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etWaiterPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="42dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.UTaste" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/burgundy</item>
+        <item name="colorPrimaryDark">@color/burgundy</item>
+        <item name="colorAccent">@color/soft_burgundy</item>
+    </style>
+</resources>

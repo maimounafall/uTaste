@@ -1,0 +1,42 @@
+@startuml
+autonumber
+title Sequence Diagram  adds Ingredient with QR code
+
+actor Chef as A
+participant "ChefUI" as UI
+participant "QRCodeScanner" as QR
+participant "RecipeController" as C
+participant "IngredientRepository" as IR
+participant "RecipeRepository" as RR
+participant "DatabaseHelper" as DB
+
+A -> UI : openAddIngredient(recipeId)
+UI -> QR : scanQRCode()
+QR --> UI : qrCode
+
+A -> UI : input(title, quantityPercent)
+UI -> C : addIngredient(recipeId, qrCode, title, quantityPercent)
+
+' Vérifier que la recette existe
+C -> RR : findById(recipeId)
+RR --> C : Recipe
+
+alt recipe not found
+  C -> UI : error("Recipe not found")
+  return
+else
+  ' Créer l’ingrédient
+  C -> C : id = UUID()\ncreatedAt=now\nupdatedAt=now
+  C -> C : ingredient = new Ingredient(id,title,qrCode,quantityPercent,createdAt,updatedAt)
+  
+  ' Sauvegarde
+  C -> IR : save(ingredient)
+  IR -> DB : INSERT INTO ingredients (...)
+  DB --> IR : ok
+  IR --> C : ok
+
+  ' Confirmer
+  C --> UI : success("Ingredient added")
+  UI --> A : showConfirmation()
+end
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+autonumber
+title Sequence Diagram updates Ingredient quantity
+
+actor Chef as A
+participant "ChefUI" as UI
+participant "RecipeController" as C
+participant "IngredientRepository" as IR
+participant "DatabaseHelper" as DB
+
+A -> UI : selectIngredient(ingredientId)
+UI -> C : getIngredient(ingredientId)
+C -> IR : findById(ingredientId)
+IR --> C : Ingredient
+C --> UI : display(ingredient)
+
+A -> UI : changeQuantity(newQuantity)
+UI -> C : updateIngredient(ingredientId, newQuantity)
+
+' Mise à jour
+C -> IR : findById(ingredientId)
+IR --> C : Ingredient (i)
+C -> C : i.setQuantityPercent(newQuantity)
+C -> IR : update(i)
+IR -> DB : UPDATE ingredients SET quantityPercent=... WHERE id=?
+DB --> IR : ok
+IR --> C : ok
+
+C --> UI : success("Ingredient updated")
+UI --> A : showConfirmation()
+@enduml

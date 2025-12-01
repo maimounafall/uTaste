@@ -1,0 +1,17 @@
+@startuml
+
+title Sequence diagram- User login
+
+actor User 
+boundary LoginScreen
+' this class manage the authentification and the userMemory by using HasMap
+control UserManager
+'the user send his informations to the login screen
+User -> LoginScreen: enter email and password 
+' LoginScreen call UserManager to verify the informations 
+LoginScreen -> UserManager: authenticate(email,password)
+' userManager verify the informations 
+UserManager-> LoginScreen: success or failure
+'loginScreen call user to give him the reposne from userManager
+LoginScreen -> User: show menu or error
+@enduml

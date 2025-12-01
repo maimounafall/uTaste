@@ -1,0 +1,56 @@
+@startuml
+autonumber
+title Sequence Diagram Add new Recipe
+
+actor Chef as A
+' l'interface que le chef manipule 
+participant "ChefUI" as UI
+participant "RecipeController" as C
+participant "RecipeRepository" as RR
+participant "UserRepository" as UR
+participant "DatabaseHelper" as DB
+
+' le chef ouvre l'ecran "créer rectte" 
+A -> UI : openCreateRecipeForm()
+'l'ecran affiche un formulaire a remplir par le chef 
+UI -> A : showForm(name, description, imagePath)
+' le chef rempli 
+A -> UI : submit(name, description, imagePath)
+'l'UI appelle le controleur
+UI -> C : createRecipe(chefEmail, name, description, imagePath)
+
+' (1) Vérifier que le chef existe et est autorisé
+'Dans l’implémentation :
+'SessionManager.getActiveUser()
+'fournit le Chef actuellement connecté.
+'findByEmail() représente une validation conceptuelle.
+C -> UR : findByEmail(chefEmail)
+UR --> C : User (Chef)
+C -> C : assert user.role == "Chef"
+
+' (2) Vérifier l'unicité du nom
+C -> RR : findByName(name)
+RR --> C : null or Recipe
+
+alt name already exists
+  C -> UI : error("Recipe name must be unique")
+  return
+else name is free
+  ' (3) Créer l'id et l'objet en mémoire
+  C -> C : id = UUID()\ncreatedAt=now\nupdatedAt=now
+  C -> C : recipe = new Recipe(id,name,description,imagePath,createdAt,updatedAt)
+
+  ' (4) Persister
+  C -> RR : save(recipe)
+  RR -> DB : INSERT INTO recipes (...)
+  DB --> RR : ok
+  RR --> C : ok
+
+  ' (5) Retour UI
+  C --> UI : success(recipe)
+  UI --> A : showConfirmation(recipe)
+end
+
+@enduml
+
+

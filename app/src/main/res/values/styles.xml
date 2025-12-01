@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HintTextStyle">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColorHint">#808080</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@drawable/offwhite_rounded</item>
+        <item name="android:windowBackground">@drawable/offwhite_rounded</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+        <item name="android:windowAnimationStyle">@style/DialogFadeAnimation</item> <!-- ✨ added -->
+    </style>
+
+    <style name="DialogFadeAnimation">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+</resources>

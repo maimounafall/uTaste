@@ -1,0 +1,26 @@
+@startuml
+title Activity Diagram - Manage Waiters (Administrator)
+
+start
+
+:Administrator opens "Manage Waiters" menu;
+:Choose an action (Add / Modify / Delete);
+
+switch (Action)
+  case (Add)
+    :Enter waiter info (email, firstName, lastName);
+    :Create waiter with default password = "waiter-pwd";
+    :Display confirmation;
+  case (Modify)
+    :Select a waiter;
+    :Modify firstName, lastName, email, password;
+    :Update modification date;
+    :Display confirmation;
+  case (Delete)
+    :Select a waiter;
+    :Delete waiter from the list;
+    :Display confirmation;
+endswitch
+
+stop
+@enduml

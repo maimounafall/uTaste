@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".StockActivity">
+
+    <!-- Bande bordeaux -->
+    <View
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/top_profile_backgnd"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Bouton retour -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:padding="10dp"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/burgundy"/>
+
+    <!-- Bouton code-barres -->
+    <Button
+        android:id="@+id/btnScanBarcode"
+        android:layout_width="58dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iconBarcode"
+        android:layout_width="58dp"
+        android:layout_height="38dp"
+        android:src="@drawable/barcode_icon"
+        android:tint="@color/burgundy"
+        android:tintMode="add"
+        app:layout_constraintBottom_toBottomOf="@id/btnScanBarcode"
+        app:layout_constraintEnd_toEndOf="@id/btnScanBarcode"
+        app:layout_constraintStart_toStartOf="@id/btnScanBarcode"
+        app:layout_constraintTop_toTopOf="@id/btnScanBarcode" />
+
+    <!-- Titre Stock -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:text="Stock"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+    <!-- Barre de recherche (centrée et cute, utilise ton rounded_button) -->
+    <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@android:drawable/ic_menu_search"
+            android:tint="@color/burgundy" />
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Search..."
+            android:paddingStart="15dp"
+            android:textColor="@color/burgundy"
+            android:textColorHint="@color/burgundy"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- Liste des ingrédients -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerStock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_ingredient_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

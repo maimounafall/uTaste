@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"
+    tools:context=".ChefActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/burgundy"
+            android:text="Logout"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteY="70dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--  Bande bordeaux -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/white_background"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="320dp"
+                            android:background="@drawable/top_profile_backgnd"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/imageChef"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="140dp"
+
+                            android:layout_marginTop="40dp"
+                            android:layout_marginEnd="140dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:srcCompat="@drawable/chef_icon3" />
+
+                        <TextView
+                            android:id="@+id/tvChefName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/chef_name"
+                            android:textColor="@color/pale_pink"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageChef" />
+
+                        <TextView
+                            android:id="@+id/tvChefEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/chef_email"
+                            android:textColor="@color/pale_pink"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvChefName" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="50dp"
+                            android:background="@drawable/white_background"
+                            android:elevation="3dp"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvChefEmail">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+                                <!-- Manage Stock -->
+                                <LinearLayout
+                                    android:id="@+id/cardManageStock"
+                                    android:layout_width="0dp"
+                                    android:layout_height="120dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgManageStock"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            android:tintMode="src_in"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/stock_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <!-- invisible button -->
+                                        <Button
+                                            android:id="@+id/btnManageStock"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgManageStock"
+                                            app:layout_constraintEnd_toEndOf="@id/imgManageStock"
+                                            app:layout_constraintStart_toStartOf="@id/imgManageStock"
+                                            app:layout_constraintTop_toTopOf="@id/imgManageStock" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Manage Stock"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Create Recipe -->
+                                <LinearLayout
+                                    android:id="@+id/cardAddRecipe"
+                                    android:layout_width="0dp"
+                                    android:layout_height="120dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="5dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgAddRecipe"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/add_recepe_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <!-- invisible button -->
+                                        <Button
+                                            android:id="@+id/btnAddRecipe"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgAddRecipe"
+                                            app:layout_constraintEnd_toEndOf="@id/imgAddRecipe"
+                                            app:layout_constraintStart_toStartOf="@id/imgAddRecipe"
+                                            app:layout_constraintTop_toTopOf="@id/imgAddRecipe" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Add Recipe"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Manage Recipes -->
+                                <LinearLayout
+                                    android:id="@+id/cardManageRecipes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="120dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/pale_background"
+                                    android:elevation="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_margin="12dp"
+                                        android:background="@drawable/rounded_button">
+
+                                        <ImageView
+                                            android:id="@+id/imgManageRecipes"
+                                            android:layout_width="46dp"
+                                            android:layout_height="46dp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/manage_recipe_icon"
+                                            app:tint="@color/burgundy" />
+
+                                        <!-- invisible button -->
+                                        <Button
+                                            android:id="@+id/btnManageRecipes"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="@android:color/transparent"
+                                            app:layout_constraintBottom_toBottomOf="@id/imgManageRecipes"
+                                            app:layout_constraintEnd_toEndOf="@id/imgManageRecipes"
+                                            app:layout_constraintStart_toStartOf="@id/imgManageRecipes"
+                                            app:layout_constraintTop_toTopOf="@id/imgManageRecipes" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Manage Recipes"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="24dp"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="30dp"
+                                android:background="@drawable/white_background"
+                                android:elevation="3dp"
+                                android:orientation="vertical">
+
+                                <!-- Password -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Password"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <EditText
+                                        android:id="@+id/editChefPassword"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:inputType="textPassword"
+                                        android:text="@string/chef_pwd"
+                                        android:textAlignment="viewEnd"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:background="@color/burgundy" />
+
+                                <!-- Dates -->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Created at"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvChefCreatedAt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2025-10-09 14:33"
+                                        android:textColor="#444"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Last updated"
+                                        android:textColor="@color/burgundy"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvChefUpdatedAt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2025-10-09 14:33"
+                                        android:textColor="#444"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 🍴 Boutons principaux -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="80dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <Button
+                        android:id="@+id/btnChefSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_button"
+                        android:text="Save changes"
+                        android:textColor="@color/burgundy" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
