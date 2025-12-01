@@ -58,8 +58,8 @@ I worked on:
 ## Screenshots
 
 <p align="center">
-  <img src="images/welcome.png" width="250"/>
-  <img src="images/login.png" width="250"/>
+  <img src="images/welcome_page.png" width="250"/>
+  <img src="images/login_page.png" width="250"/>
   <img src="images/chef.png" width="250"/>
 </p>
 
