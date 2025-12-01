@@ -1,113 +1,87 @@
-# uTaste- Restaurant Management Application
+# uTaste – Restaurant Management App
 
-## Project Description
-**uTaste** is an Android application developed for a gastronomic restaurant to help manage sales , nutritional information from ingredients, and recipes. The app allows multiple users to share the same device and authenticate with the specific roles 
-**Administrator**
-**Chef**
-**Waiter**
+uTaste is a multi-role Android application designed to help a restaurant manage recipes, ingredients, nutrition data, and sales. The app supports three user roles — Administrator, Chef, and Waiter — each with its own interface and permissions.
 
-Each role has acess to specific features:
+This project was built in Java using Android Studio, with a Room database and custom UI components.
 
-- **Administrator :** manages user accounts(waiters) , can reset passwords and the database.
+---
 
-- **Chef :** manages recipes and ingredients, retrieves nutritional information, and calculates nutrition summaries.
+## My Contributions
 
-- **Waiter:** Views recipes, records sales, and generates sales and reports.
+I worked on:
 
-This project is developed in **Java** using **Android Studio**, with **PlantUML** for UML modeling and **Github** for version control.
+- Designing and implementing all screens, layouts, and UI elements  
+- Creating the user flows for Administrator, Chef, and Waiter roles  
+- Developing custom RecyclerView cards and adapters  
+- Building dialogs for editing recipes, adding ingredients, and viewing nutrition  
+- Connecting UI features to Room database logic  
+- Implementing the sales report, nutrition summary, and feedback systems  
+- Establishing a consistent visual identity and interface structure  
 
+---
 
+## Features
 
+### **Administrator**
+- Manage user accounts (add, edit, delete)
+- Reset passwords  
+- View account information and timestamps
 
+### **Chef**
+- Create, edit, and delete recipes  
+- Add and manage ingredients  
+- Compute recipe nutrition (calories, macronutrients)  
+- View ingredient stock  
 
-## How to Rebuild the Project
+### **Waiter**
+- View recipe list  
+- Record sales with rating and feedback  
+- View sales report including:  
+  - total sales per recipe  
+  - average rating  
+  - quick review summaries  
 
-1. **Clone the repository:**
-git clone https://github.com/uOttawa-2025-2026-seg2505-projet/Groupe-06-repo.git
+---
 
+## Tech Stack
 
-2. Open the project folder in **Android Studio**
-3. Wait for Gradle to sync automtically
-4. Build and run the project on:
-   - An **Android emulator** ( for the project),or 
-   - A **physical Android device** if you have one 
-5. No database configuration(SQ lite is optional for delivrable 1) is required for  **Delivrable 1** - all data is stored **in memory** using Java HasMap.
+- Java (Android)
+- Room Database (entities, DAOs)
+- XML Layouts
+- RecyclerView and custom adapters
+- Glide (image loading)
+- Custom dialogs and UI components
+- Background threading for long-running tasks
 
-## Validation Scenario( Delivrable 1)
-You can follow all these steps to verify that all required features work correctly:
+---
 
-1. Launch the application
-2. On the login screen enter:
-   - **Email:** 'admin@utaste.ca" ( Example)
-   - **Password:** 'admin-pwd' (default password)
-3. Login in as **Administrator**.
-4. From the admin menu:
-    - Add a new **Waiter**(full name:Waiter A, Email:waitera@utaste.ca, Password:waitera-pwd)
-    - Modify an existing Waiter(Change the password to:waiteraa-pwdd)
-    - Add a new **Waiter**(full name:Waiter B, Email:waiterb@utaste.ca, Password:waiterb-pwd)
-    - Delete a waiter(Waiter B) 
-5. Log out(top right button)
-6. Log in using the newly created Waiter account:
-   - **Email:** 'waitera@utaste.ca'
-   - **Password:** 'Waiteraa-pwdd'
-7. Log out again.
-8. Log in as **Chef** using:
-- **Email:** 'chef@utaste.ca'
-- **Password:** 'chef-pwd
-9.  Confirm that each user sees 
-only their specific menu( Admin, Chef, Waiter).
+## Screenshots
 
-**Expected Results:**
-- Authentication works for all users.
-- Admin can create, edit, and delete Waiters
-- Each role accesses its own interface only.
-- Password change works after authentification.
-- All operations are temporary( in memory storage).
+<p align="center">
+  <img src="images/welcome.png" width="250"/>
+  <img src="images/login.png" width="250"/>
+  <img src="images/chef.png" width="250"/>
+</p>
 
+<p align="center">
+  <img src="images/manage_recipes.png" width="250"/>
+  <img src="images/sales_report.png" width="250"/>
+</p>
 
-## Known Limitations
+---
 
-- **No databse persitence:** All data is stored in memory and lost when the app restarts\
-- **Limited functionality fo non-admin roles:** Chef and waiter menus exist but without any implemented functions( it will be availaible in the future).
-- **UI is functional but minimal:** The design focues on functionality rathet than the apperance for delivrable 1
-- **No REST or JSON  network integration yet:** for the nutritonal informations. It will be implemented in future delivrables 
+## Installation
 
-##  Project Status – Deliverable 1
+Clone the repository:
 
-| Feature | Status | Notes |
-|----------|---------|-------|
-| GitHub repository created and configured | ✅ | All members added |
-| UML Diagrams (Class, Activity, Sequence) | ✅ | Stored in `/doc/uml` |
-| User roles (Admin, Chef, Waiter) | ✅ | Implemented in memory |
-| Authentication and logout | ✅ | Works for all users |
-| Change password | ✅ | Implemented |
-| Admin CRUD on Waiters | ✅ | Add / Modify / Delete Waiters |
-| SQLite Database |❌  | Not required for Deliverable 1 |
-| Recipes, Nutrition, Sales | ❌ | To be implemented in later deliverables |
-| Demonstration video | ✅ | Included in `/demonstrations/` folder |
+'''
+git clone https://github.com/maimounafall/uTaste.git
+'''
+Open the project in **Android Studio**, wait for Gradle to sync, and run it on an emulator or physical device.
 
-## Team Menbers and Roles
+---
 
-| Name | Role | Responsibilities |
-|------|------|------------------|
-| **Toure Idriss Hamad** | UML Designer / Documentation Lead | Class, Activity, and Sequence diagrams; documentation,video demo  |
-| **Diagne,Mouhammad Habiballah** | Backend Developer | UserManager, authentication, logic implementation, video demo |
-| **Fall Maïmouna** | Frontend Developer | Android UI design and navigation,video demo |
-| **Mas'ud Habeebat** | Scrum Master / GitHub Manager | Repository setup, branching, integration, video demo |
+## Project Status
 
- ##  Summary
-Deliverable 1 focuses on the **core user management and authentication features**.  
-The project now includes all required UML models, documentation, and a functional Android prototype with in-memory data storage.  
-Future deliverables will extend the system with database support, recipe management, nutrition tracking, and sales recording.
-
-
-
-
-
-
-
-
-
- 
-
+Fully completed and functional. Includes all major features: multi-role system, recipe management, ingredient handling, nutrition calculations, sales tracking, and feedback reporting.
 
